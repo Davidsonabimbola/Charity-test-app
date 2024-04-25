@@ -47,23 +47,29 @@ const { url } = require("../common");
         When('I fill in the email {word} correctly',{timeout:100*1000},async(emailAddress)=>{
 //             const email_Section = page.locator('[id="user_email"]') //Email
 // await email_Section.fill(emailAddress)
-signuppagePO = new SignuppagePO(page);
+            signuppagePO = new SignuppagePO(page);
             signuppagePO.enterEmailAddress(emailAddress)
         })
 
         When('I fill in the password {word} correctly',{timeout:100*1000},async(password)=>{
-            const password_Section = page.locator('[id="user_password"]') //Password
-            await password_Section.fill(password)
+            // const password_Section = page.locator('[id="user_password"]') //Password
+            // await password_Section.fill(password)
+            signuppagePO = new SignuppagePO(page);
+            signuppagePO.enterPassword(password)
         })
 
         When('I fill in the confirm password {word} correctly',{timeout:100*1000},async(confirmPassword)=>{
-            const confirmPassword_Section = page.locator('[id="user_password_confirmation"]') //Confirm Password
-await confirmPassword_Section.fill(confirmPassword)
+//             const confirmPassword_Section = page.locator('[id="user_password_confirmation"]') //Confirm Password
+// await confirmPassword_Section.fill(confirmPassword)
+            signuppagePO = new SignuppagePO(page);
+            signuppagePO.enterConfirmPassword(confirmPassword)
         })
 
         When('I submit the Form', {timeout:100*1000},async()=>{
             const signUp_Button =await  page.locator('[class="rounded-md bg-indigo-600 px-6 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"]')
 await signUp_Button.click() //click sign up button
+            // signuppagePO = new SignuppagePO(page);
+            // signuppagePO.clickSignUpButton()
         })
 
         Then('I am redirected to the User Profile page',{timeout:100*1000}, async()=>{
