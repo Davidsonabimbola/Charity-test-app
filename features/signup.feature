@@ -1,11 +1,12 @@
 Feature: Sign up functionality
 
     Background: Pre-condition
+    @specific @smoke
     Scenario: Navigation to the sign up page
         Given  I am an anonymous user AND I visit the Mercy page
         When I click the Sign Up button on the Top Right section
         Then I am redirected to the Sign Up page
-
+    @smoke
     Scenario Outline: Filling up all the details
         # Given I am an anonymous user AND I am in the Sign Up page
         When I fill in the first name <firstName> correctly
@@ -21,7 +22,7 @@ Feature: Sign up functionality
             | Johnson   | Nwaodoh  | johnson_nwaodoh@yahoo.com | 101.Mokate001 | 101.Mokate001   |
             | Garba     | Lawal    | ghhema_law@yahoo.com      | 101.Ontogo    | 101.Ontogo      |
 
-    # @specific
+    @specific
     Scenario: Filling up the details with an empty required field
         # Given I am an anonymous user AND I am in the Sign Up page
         When I fill in the specific first name "Johnbull" correctly

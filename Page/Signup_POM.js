@@ -1,6 +1,6 @@
 const { Given, When,Then } = require("@cucumber/cucumber");
 const { chromium } = require("@playwright/test");
-const { url } = require("./common");
+// const { url } = require("./common");
  const { test, expect, playwright } = require("@playwright/test");
 
 
@@ -13,10 +13,15 @@ constructor(page){
 }
 
 async enterFirstName(firstName){
-    const firstName_Section = page.locator('[id="user_first_name"]') //FirstName
-    // await firstName_Section.fill(firstName)
-    await this.page.fill(firstName_Section, firstName) // use this.page.fill before the locator
+    this.page.fill('[id="user_first_name"]',firstName)
 }
 
+async enterLastName(lastName){
+    this.page.fill('[id="user_last_name"]',lastName)
+}
+
+async enterEmailAddress(email){
+    this.page.fill('[id="user_email"]',email)
+}
  }
  module.exports = SignuppagePO

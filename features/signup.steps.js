@@ -3,12 +3,12 @@ const {Given,When,Then} = require('@cucumber/cucumber')
 const { chromium } = require("@playwright/test");
 const { url } = require("../common");
  const { test, expect, playwright } = require("@playwright/test");
-//   const SignuppagePO = require("../Page/Signup_POM")
+    const SignuppagePO = require("../Page/Signup_POM")
 
  let page
-//  let signuppagePO
+   let signuppagePO
        
-         Given('I am an anonymous user AND I visit the Mercy page',{timeout:100*1000}, async()=> {
+         Given('I am an anonymous user AND I visit the Mercy page',{timeout:100*1000}, async ()=> {
             const browser = await chromium.launch({
                 headless: false
             });
@@ -31,20 +31,24 @@ const { url } = require("../common");
 
 
         When('I fill in the first name {word} correctly',{timeout:100*1000},async(firstName)=>{
-            const firstName_Section = page.locator('[id="user_first_name"]') //FirstName
-            await firstName_Section.fill(firstName)
-            // signuppagePO = new SignuppagePO(page);
-            // await signuppagePO.enterFirstName(firstName)
+            // const firstName_Section = page.locator('[id="user_first_name"]') //FirstName
+            // await firstName_Section.fill(firstName)
+             signuppagePO = new SignuppagePO(page);
+             await signuppagePO.enterFirstName(firstName)
         })
 
         When('I fill in the last name {word} correctly',{timeout:100*1000},async(lastName)=>{
-            const lastName_Section = page.locator('[id="user_last_name"]') //LastName
-            await lastName_Section.fill(lastName)
+            // const lastName_Section = page.locator('[id="user_last_name"]') //LastName
+            // await lastName_Section.fill(lastName)
+            signuppagePO = new SignuppagePO(page);
+            signuppagePO.enterLastName(lastName)
         })
 
         When('I fill in the email {word} correctly',{timeout:100*1000},async(emailAddress)=>{
-            const email_Section = page.locator('[id="user_email"]') //Email
-await email_Section.fill(emailAddress)
+//             const email_Section = page.locator('[id="user_email"]') //Email
+// await email_Section.fill(emailAddress)
+signuppagePO = new SignuppagePO(page);
+            signuppagePO.enterEmailAddress(emailAddress)
         })
 
         When('I fill in the password {word} correctly',{timeout:100*1000},async(password)=>{
@@ -69,8 +73,10 @@ expect(await message_Section).toBeTruthy()
         })
 
         When('I fill in the specific first name {string} correctly',async(firstName)=>{
-            const firstName_Section = page.locator('[id="user_first_name"]') //FirstName
-            await firstName_Section.fill(firstName)
+            // const firstName_Section = page.locator('[id="user_first_name"]') //FirstName
+            // await firstName_Section.fill(firstName)
+            signuppagePO = new SignuppagePO(page);
+         await signuppagePO.enterFirstName(firstName)
         })
 
         When('I fill in the specific last name {string} correctly',async(lastName)=>{
