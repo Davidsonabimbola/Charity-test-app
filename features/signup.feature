@@ -18,9 +18,9 @@ Feature: Sign up functionality
         Then I am redirected to the User Profile page
 
         Examples:
-            | firstName | lastName | emailAddress              | password      | confirmPassword |
-            | Johnson   | Nwaodoh  | johnson_nwaodoh@yahoo.com | 101.Mokate001 | 101.Mokate001   |
-            | Garba     | Lawal    | ghhema_law@yahoo.com      | 101.Ontogo    | 101.Ontogo      |
+            | firstName | lastName | emailAddress             | password      | confirmPassword |
+            | Justin    | Thorpe   | justme_adelove@yahoo.com | 101.Mokate001 | 101.Mokate001   |
+            | Kenneth   | Amad     | ken_law@yahoo.com        | 101.Ontogo    | 101.Ontogo      |
 
     @specific
     Scenario: Filling up the details with an empty required field

@@ -1,9 +1,9 @@
 // const { Given, When,Then } = require("@cucumber/cucumber");
 const {Given,When,Then} = require('@cucumber/cucumber')
 const { chromium } = require("@playwright/test");
-const { url } = require("../common");
+const { url } = require("../../common");
  const { test, expect, playwright } = require("@playwright/test");
-    const SignuppagePO = require("../Page/Signup_POM")
+    const SignuppagePO = require("../../Page/Signup_POM")
 
  let page
    let signuppagePO
@@ -67,14 +67,14 @@ const { url } = require("../common");
 
         When('I submit the Form', {timeout:100*1000},async()=>{
             const signUp_Button =await  page.locator('[class="rounded-md bg-indigo-600 px-6 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"]')
-await signUp_Button.click() //click sign up button
+            await signUp_Button.click() //click sign up button
             // signuppagePO = new SignuppagePO(page);
             // signuppagePO.clickSignUpButton()
         })
 
         Then('I am redirected to the User Profile page',{timeout:100*1000}, async()=>{
             const message_Section =  await page.locator('[class="bg-blue-100 border-t border-b border-blue-500 text-blue-700 px-4 py-3"]')
-expect(await message_Section).toBeTruthy()
+            expect(await message_Section).toBeTruthy()
 // await page.pause()
         })
 
