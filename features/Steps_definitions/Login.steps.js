@@ -26,7 +26,6 @@ const { url } = require("../../common");
          Then('I am redirected to the Sign In page',{timeout:100*1000}, async()=>{
             const signIN_message = page.locator('[class="sm:mx-auto sm:w-full sm:max-w-sm"]')
             expect(await signIN_message).toBeTruthy()
-            //await page.locator('[id="email"]').fill('Abimbola')
             page.pause()
          })
 
@@ -42,5 +41,7 @@ const { url } = require("../../common");
             await Signin_button.click()
           })
           Then('I am redirected to the exact User Profile page',{timeout:100*1000},async()=>{
-            expect(await page.locator('[class="bg-blue-100 border-t border-b border-blue-500 text-blue-700 px-4 py-3"]')).toBeTruthy()
+            const received_message = page.locator('[class="bg-blue-100 border-t border-b border-blue-500 text-blue-700 px-4 py-3"]')
+            expect(await received_message).toBeTruthy()
+            console.log(await received_message.textContent())
           })
