@@ -2,8 +2,10 @@ const {Given,When,Then} = require('@cucumber/cucumber')
 const { chromium } = require("@playwright/test");
 const { url } = require("../../common");
  const { test, expect, playwright } = require("@playwright/test");
+ const LoginPage = require ('../../Page/Login_POM')
 
  let page
+ let loginpagePO
    
        
          Given('I am an anonymous user AND I visit the specific Mercy page',{timeout:100*1000}, async ()=> {
@@ -30,7 +32,9 @@ const { url } = require("../../common");
          })
 
           When('I indicate correct email {string}', {timeout:100*1000}, async(email)=>{
-            await page.locator('[id="email"]').fill(email)
+            // await page.locator('[id="email"]').fill(email)
+            loginpagePO = new LoginPage(page)
+            await loginpagePO.enterEmail(email)
           })
 
           When('I indicate correct password {string}',{timeout:100*1000}, async(password)=>{

@@ -10,7 +10,8 @@ Feature: Login functionality
 
     Scenario: wrong email and password
         Given I am an anonymous user AND I am in the Sign In page
-        When I indicate wrong email and password
+        When I indicate wrong email
+        And I indicate wrong password
         And I submit the form
         Then I get an error message
     @visit
