@@ -29,3 +29,18 @@ const { url } = require("../../common");
             //await page.locator('[id="email"]').fill('Abimbola')
             page.pause()
          })
+
+          When('I indicate correct email {string}', {timeout:100*1000}, async(email)=>{
+            await page.locator('[id="email"]').fill(email)
+          })
+
+          When('I indicate correct password {string}',{timeout:100*1000}, async(password)=>{
+            await page.locator('[id="password"]').fill(password)
+          })
+          When('I submit the form',{timeout:100*1000},async()=>{
+            const Signin_button = await page.locator('[class="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"]')
+            await Signin_button.click()
+          })
+          Then('I am redirected to the exact User Profile page',{timeout:100*1000},async()=>{
+            expect(await page.locator('[class="bg-blue-100 border-t border-b border-blue-500 text-blue-700 px-4 py-3"]')).toBeTruthy()
+          })

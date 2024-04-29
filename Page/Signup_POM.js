@@ -4,9 +4,6 @@ const { chromium } = require("@playwright/test");
  const { test, expect, playwright } = require("@playwright/test");
 
 
-
-
-
  class SignuppagePO{
 constructor(page){
     this.page = page;

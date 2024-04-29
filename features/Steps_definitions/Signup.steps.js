@@ -73,34 +73,44 @@ const { url } = require("../../common");
         })
 
         Then('I am redirected to the User Profile page',{timeout:100*1000}, async()=>{
+            await page.waitForLoadState()
             const message_Section =  await page.locator('[class="bg-blue-100 border-t border-b border-blue-500 text-blue-700 px-4 py-3"]')
             expect(await message_Section).toBeTruthy()
 // await page.pause()
         })
 
         When('I fill in the specific first name {string} correctly',async(firstName)=>{
+           await page.waitForLoadState()        
             // const firstName_Section = page.locator('[id="user_first_name"]') //FirstName
             // await firstName_Section.fill(firstName)
             signuppagePO = new SignuppagePO(page);
          await signuppagePO.enterFirstName(firstName)
+         
         })
 
         When('I fill in the specific last name {string} correctly',async(lastName)=>{
+           await  page.waitForLoadState()        
             const lastName_Section = page.locator('[id="user_last_name"]') //LastName
             await lastName_Section.fill(lastName)
+            
         })
 
-        // When('I fill in the email {string} correctly',async(email)=>{
-        //     const lastName_Section = page.locator('[id="user_last_name"]') //LastName
-        //     await lastName_Section.fill(lastName)
-        // })
+        When('I fill in the specific email {string} correctly',async(email)=>{
+            await page.waitForLoadState()
+            // const lastName_Section = page.locator('[id="user_last_name"]') //email
+            // await lastName_Section.fill(lastName)
+            signuppagePO = new SignuppagePO(page);
+            await signuppagePO.enterEmailAddress(email)
+        })
 
         When('I fill in the specific password {string} correctly',async(password)=>{
+            await page.waitForLoadState()
             const password_Section = page.locator('[id="user_password"]') //Password
             await password_Section.fill(password)
         })
 
         When('I fill in the specific confirm password  {string} correctly', async (confirmPassword)=> {
+            await page.waitForLoadState()
             const confirmPassword_Section = page.locator('[id="user_password_confirmation"]') //Confirm Password
             await confirmPassword_Section.fill(confirmPassword)
           });
@@ -112,6 +122,7 @@ const { url } = require("../../common");
 
 
         Then('I get an error message indicating that the field is required', async()=>{
+            page.waitForLoadState()
             const form_invalid = await page.locator('[class="font-medium"]')
             const invalid_message = await form_invalid.textContent()
             console.log(invalid_message)

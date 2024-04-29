@@ -1,7 +1,7 @@
 Feature: Sign up functionality
 
     Background: Pre-condition
-    @specific @smoke
+    @specific @smoke @test
     Scenario: Navigation to the sign up page
         Given  I am an anonymous user AND I visit the Mercy page
         When I click the Sign Up button on the Top Right section
@@ -31,3 +31,12 @@ Feature: Sign up functionality
         And I fill in the specific confirm password  'nomoreYahoo.123' correctly
         And I submit the Form
         Then I get an error message indicating that the field is required
+
+    @specific @test
+    Scenario: Filling up the details correctly
+        When I fill in the specific first name "Doris" correctly
+        And I fill in the specific last name "Anthony" correctly
+        And I fill in the specific email 'doranth_002@yahoo.com' correctly
+        And I fill in the specific password 'nomoreYahoo.123' correctly
+        And I submit the Form
+        Then I am redirected to the User Profile page
